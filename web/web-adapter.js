@@ -80,6 +80,16 @@
         if (navigator.vibrate && active) navigator.vibrate(12);
       } catch (e) { /* ignore */ }
     },
+    createWebAudioContext: function () {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      return AC ? new AC() : null;
+    },
+    onHide: function (cb) {
+      document.addEventListener('visibilitychange', function () { if (document.hidden) cb(); });
+    },
+    onShow: function (cb) {
+      document.addEventListener('visibilitychange', function () { if (!document.hidden) cb(); });
+    },
     showToast: function (opt) { console.log('[toast]', opt && opt.title); },
     showShareMenu: function () {},
     onShareAppMessage: function () {}
