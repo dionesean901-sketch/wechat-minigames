@@ -26,6 +26,7 @@
     .card:hover { border-color: var(--accent); }
     .card[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
     .card b { font-size: 16px; }
+    .card small { font-size: 11px; color: #fff; background: var(--accent); border-radius: 8px; padding: 1px 6px; margin-left: 4px; vertical-align: 2px; }
     .card span { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
     .phone { width: 390px; height: 760px; border: 10px solid #1f2328; border-radius: 36px; overflow: hidden;
              background: #000; position: sticky; top: 24px; }
@@ -41,8 +42,11 @@
   <main>
     <section>
       <h1>微信小游戏合集</h1>
-      <p class="sub">三个原创小游戏，源码同时运行在微信开发者工具和浏览器里。</p>
-      <button class="card" data-game="star-catcher" aria-pressed="true">
+      <p class="sub">四个原创小游戏，源码同时运行在微信开发者工具和浏览器里。</p>
+      <button class="card" data-game="code-stack" aria-pressed="true">
+        <b>代码堆 Code Stack <small>新</small></b><span>叠层三消：点没被压住的代码块，3 个相同就消除，7 格卡槽满了就输。</span>
+      </button>
+      <button class="card" data-game="star-catcher" aria-pressed="false">
         <b>星星收集者</b><span>拖动篮子接住星星，躲开炸弹。金星 +5，连击加倍。</span>
       </button>
       <button class="card" data-game="stack-tower" aria-pressed="false">
@@ -51,9 +55,9 @@
       <button class="card" data-game="commit-rush" aria-pressed="false">
         <b>提交冲刺 Commit Rush</b><span>在贡献图格子上点亮绿色 commit，别点到 bug。60 秒限时。</span>
       </button>
-      <p class="hint">手机上可以直接全屏打开：<a id="direct" href="play.html?game=star-catcher">play.html?game=star-catcher</a></p>
+      <p class="hint">手机上可以直接全屏打开：<a id="direct" href="play.html?game=code-stack">play.html?game=code-stack</a></p>
     </section>
-    <div class="phone"><iframe id="frame" src="play.html?game=star-catcher" title="游戏预览"></iframe></div>
+    <div class="phone"><iframe id="frame" src="play.html?game=code-stack" title="游戏预览"></iframe></div>
   </main>
   <script>
     var frame = document.getElementById('frame');

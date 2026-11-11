@@ -1,10 +1,11 @@
 # 微信小游戏合集 wechat-minigames
 
-三个原创微信小游戏，原生 Canvas 2D 编写，不依赖任何引擎。
+四个原创微信小游戏，原生 Canvas 2D 编写，不依赖任何引擎。
 同一份 `game.js` 既能在**微信开发者工具**里运行，也能通过内置适配层在**浏览器 / GitHub Pages** 里试玩。
 
 | 游戏 | 目录 | 玩法 |
 | --- | --- | --- |
+| 🗂️ 代码堆 Code Stack | `games/code-stack` | 叠层三消：点击未被遮挡的代码块放入 7 格卡槽，凑 3 消除；撤销/移出/洗牌道具；关卡程序生成且保证有解 |
 | ⭐ 星星收集者 | `games/star-catcher` | 拖动篮子接星星、躲炸弹，金星 +5，连击加分 |
 | 🧱 叠叠高 | `games/stack-tower` | 点击落下方块，多出部分被切掉；连续完美对齐方块变宽 |
 | 🟩 提交冲刺 Commit Rush | `games/commit-rush` | GitHub 贡献图主题：限时 60 秒点亮绿色 commit，避开红色 bug，结算显示本局热力图 |
@@ -13,10 +14,11 @@
 
 ```
 games/
-  star-catcher/      每个游戏都是一个独立的微信小游戏项目
+  code-stack/        每个游戏都是一个独立的微信小游戏项目
     game.js          入口（全部游戏逻辑）
     game.json        小游戏全局配置（竖屏）
     project.config.json
+  star-catcher/
   stack-tower/
   commit-rush/
 web/

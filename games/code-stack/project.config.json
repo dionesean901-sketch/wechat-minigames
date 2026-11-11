@@ -1,0 +1,9 @@
+{
+  "description": "代码堆 Code Stack - 微信小游戏",
+  "compileType": "game",
+  "appid": "touristappid",
+  "projectname": "code-stack",
+  "libVersion": "3.0.0",
+  "setting": { "es6": true, "minified": true, "urlCheck": false },
+  "condition": {}
+}

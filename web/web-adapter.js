@@ -75,7 +75,10 @@
       try { localStorage.setItem(PREFIX + key, JSON.stringify(value)); } catch (e) { /* 隐私模式等情况忽略 */ }
     },
     vibrateShort: function () {
-      try { if (navigator.vibrate) navigator.vibrate(12); } catch (e) { /* ignore */ }
+      try {
+        var active = !navigator.userActivation || navigator.userActivation.hasBeenActive;
+        if (navigator.vibrate && active) navigator.vibrate(12);
+      } catch (e) { /* ignore */ }
     },
     showToast: function (opt) { console.log('[toast]', opt && opt.title); },
     showShareMenu: function () {},
