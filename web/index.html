@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>微信小游戏合集</title>
+  <style>
+    :root {
+      --bg: #f6f8fa; --panel: #ffffff; --text: #1f2328; --muted: #59636e;
+      --border: #d1d9e0; --accent: #1f883d; --accent-soft: #dafbe1;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #0d1117; --panel: #151b23; --text: #e6edf3; --muted: #9198a1;
+              --border: #30363d; --accent: #3fb950; --accent-soft: #12261e; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text);
+           font: 15px/1.6 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    main { max-width: 1040px; margin: 0 auto; padding: 32px 16px 48px; display: grid;
+           grid-template-columns: minmax(0, 1fr) 390px; gap: 32px; align-items: start; }
+    h1 { font-size: 26px; margin: 0 0 4px; }
+    .sub { color: var(--muted); margin: 0 0 24px; }
+    .card { display: block; width: 100%; text-align: left; background: var(--panel); color: inherit;
+            border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+            cursor: pointer; font: inherit; }
+    .card:hover { border-color: var(--accent); }
+    .card[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+    .card b { font-size: 16px; }
+    .card span { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
+    .phone { width: 390px; height: 760px; border: 10px solid #1f2328; border-radius: 36px; overflow: hidden;
+             background: #000; position: sticky; top: 24px; }
+    .phone iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .hint { color: var(--muted); font-size: 13px; margin-top: 16px; }
+    @media (max-width: 860px) {
+      main { grid-template-columns: 1fr; }
+      .phone { width: 100%; max-width: 390px; height: 72vh; margin: 0 auto; border-width: 6px; border-radius: 24px; position: static; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section>
+      <h1>微信小游戏合集</h1>
+      <p class="sub">三个原创小游戏，源码同时运行在微信开发者工具和浏览器里。</p>
+      <button class="card" data-game="star-catcher" aria-pressed="true">
+        <b>星星收集者</b><span>拖动篮子接住星星，躲开炸弹。金星 +5，连击加倍。</span>
+      </button>
+      <button class="card" data-game="stack-tower" aria-pressed="false">
+        <b>叠叠高</b><span>点击落下方块，多出的部分会被切掉。连续完美对齐会变宽。</span>
+      </button>
+      <button class="card" data-game="commit-rush" aria-pressed="false">
+        <b>提交冲刺 Commit Rush</b><span>在贡献图格子上点亮绿色 commit，别点到 bug。60 秒限时。</span>
+      </button>
+      <p class="hint">手机上可以直接全屏打开：<a id="direct" href="play.html?game=star-catcher">play.html?game=star-catcher</a></p>
+    </section>
+    <div class="phone"><iframe id="frame" src="play.html?game=star-catcher" title="游戏预览"></iframe></div>
+  </main>
+  <script>
+    var frame = document.getElementById('frame');
+    var direct = document.getElementById('direct');
+    document.querySelectorAll('.card').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.card').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        var url = 'play.html?game=' + btn.dataset.game;
+        frame.src = url;
+        direct.href = url;
+        direct.textContent = url;
+      });
+    });
+  </script>
+</body>
+</html>

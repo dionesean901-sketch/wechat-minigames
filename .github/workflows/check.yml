@@ -1,0 +1,32 @@
+name: Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Syntax check game.js
+        run: |
+          for f in games/*/game.js web/*.js; do
+            echo "checking $f"
+            node --check "$f"
+          done
+      - name: Validate JSON configs
+        run: |
+          for f in games/*/*.json; do
+            node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" && echo "ok $f"
+          done
+      - name: Each game has required files
+        run: |
+          for d in games/*/; do
+            for f in game.js game.json project.config.json; do
+              test -f "$d$f" || { echo "missing $d$f"; exit 1; }
+            done
+          done

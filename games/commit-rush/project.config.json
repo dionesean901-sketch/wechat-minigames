@@ -1,0 +1,9 @@
+{
+  "description": "提交冲刺 Commit Rush - 微信小游戏",
+  "compileType": "game",
+  "appid": "touristappid",
+  "projectname": "commit-rush",
+  "libVersion": "3.0.0",
+  "setting": { "es6": true, "minified": true, "urlCheck": false },
+  "condition": {}
+}

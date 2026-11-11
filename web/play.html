@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>小游戏预览</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #000; overscroll-behavior: none; }
+    .err { color: #fff; font: 14px sans-serif; padding: 20px; }
+  </style>
+</head>
+<body>
+  <script src="web-adapter.js"></script>
+  <script>
+    (function () {
+      var allowed = ['star-catcher', 'stack-tower', 'commit-rush'];
+      var name = new URLSearchParams(location.search).get('game');
+      if (allowed.indexOf(name) === -1) {
+        document.body.innerHTML = '<p class="err">未知游戏：请使用 ?game=star-catcher / stack-tower / commit-rush</p>';
+        return;
+      }
+      document.title = name;
+      var s = document.createElement('script');
+      s.src = '../games/' + name + '/game.js';
+      document.body.appendChild(s);
+    })();
+  </script>
+</body>
+</html>

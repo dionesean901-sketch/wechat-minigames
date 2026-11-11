@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.DS_Store
+# 微信开发者工具的本地私有配置
+project.private.config.json
